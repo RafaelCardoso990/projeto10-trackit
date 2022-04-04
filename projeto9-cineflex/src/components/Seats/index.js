@@ -39,6 +39,7 @@ export default function Seats(){
         nameInput = e.target.value
     }
     console.log(seats)
+   
 
 
    
@@ -122,28 +123,29 @@ export default function Seats(){
     ):<></>
      
     function click(){
+        createObject();
         const timer = setTimeout(() => {
             post()  
           }, 2000);
-        createObject();
     }
 
     function createObject(){
         objeto = {ids: array, 
                        name: nameInput,
                        cpf: valorInput}
-                    }
+    }
                     
     function post(){
         console.log(objeto)
         let promise = axios.post('ttps://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', objeto)
-        promise.then(response => {
-            alert('Deu certo')  
-            console.log(response)          
-        })
-        promise.catch(response =>{
-            alert(response.status)
-        })
+            promise.then(response => {
+                alert('Deu certo')  
+                console.log(response)          
+            })
+            promise.catch(response =>{
+                console.log(response.statusText)
+            })
+       
     }
 }
 
